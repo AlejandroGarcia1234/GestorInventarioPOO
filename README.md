@@ -1,3 +1,10 @@
-# 2ª Práctica de DWEC y DIW que consiste en la gestión de un inventario
+# Gestión de Inventario basado en nuestro antiguo proyecto, pero esta vez realizado usando POO
 
- **Autor:** Alejandro García Álvarez 2º DAW
+* scripts:
+    1. localStorage.js
+    2. main.js
+    3. product.js
+    4. productManager.js
+
+ **Autor:** Alejandro García Álvarez 
+ **GitHub:** 
