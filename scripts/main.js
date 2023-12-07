@@ -33,6 +33,8 @@ let inventory = [
     { id: 25, nombre: "Dragon Ball", autor: "Akira Toriyama", cantidad: getRandomQuantity(), precio: 16.85 },
 ];
 
+loadProducts(productManager);
+
 // Evento del formularuo para agregar un nuevo producto
 
 document.getElementById('inventory-tab-form').addEventListener('submit', function (event) {
@@ -70,6 +72,7 @@ function updateInventoryTable() {
         const row = document.createElement('tr');
         row.innerHTML = `
             <td>${product.nombre}</td>
+            <td>${product.autor}</td>
             <td>${product.cantidad}</td>
             <td>${product.precio}</td>
             <td>
