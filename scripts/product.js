@@ -1,12 +1,14 @@
 export class Product {
     #id;
     #nombre;
+    #autor;
     #cantidad;
     #precio;
 
-    constructor(id, nombre, cantidad, precio) {
+    constructor(id, nombre, autor, cantidad, precio) {
         this.#id = id;
         this.#nombre = nombre;
+        this.#autor = autor;
         this.#cantidad = cantidad;
         this.#precio = precio;
     }
@@ -27,6 +29,14 @@ export class Product {
         this.#nombre = value
     }
 
+    get autor() {
+        return this.#autor;
+    }
+
+    set autor(value) {
+        this.#autor = value
+    }
+
     get cantidad() {
         return this.#cantidad;
     }
@@ -44,6 +54,6 @@ export class Product {
     }
 
     showProduct(){
-        console.log(`ID: ${this.#id}, Nombre: ${this.#nombre}, Cantidad: ${this.#cantidad}, Precio: ${this.#precio}`);
+        console.log(`ID: ${this.#id}, Nombre: ${this.#nombre}, Autor: ${this.#autor}, Cantidad: ${this.#cantidad}, Precio: ${this.#precio}`);
     }
 }
