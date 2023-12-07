@@ -17,6 +17,30 @@ h1{
     color: black;
 }
 
+h1 { 
+    font-size: 36px; 
+    font-weight: bold; 
+    animation: gradientText 5s ease-in-out infinite; 
+} 
+
+@keyframes gradientText { 
+    0% { 
+        color: red; 
+    } 
+
+    25% { 
+        color: yellow; 
+    } 
+
+    50% { 
+        color: blue; 
+    } 
+
+    100% { 
+        color: green; 
+    } 
+} 
+
 h2{
     text-align: center;
     font-family: 'Griffy';
@@ -31,7 +55,26 @@ h2::before {
   h2::after {
     content: " »";
     color: black;
+}
+
+@keyframes grow-and-shrink {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.5);
+    }
+    100% {
+      transform: scale(1);
+    }
   }
+
+  h2 {
+    animation: grow-and-shrink 4000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+
 
 form{
     display: flex;
@@ -124,5 +167,8 @@ button:hover{
     flex-direction: row;
     padding-bottom: 15px;
 }
+
+
+
 
 

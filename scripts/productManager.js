@@ -38,7 +38,7 @@ export class ProductManager {
     // Método para mostrar todos los productos dentro del Array
     showProducts() {
         for (const product of this.#products) {
-            console.log(`ID: ${product.id}, Nombre: ${product.nombre}, Cantidad: ${product.cantidad}, Precio: ${product.precio}`);
+            console.log(`ID: ${product.id}, Nombre: ${product.nombre}, Autor: ${this.autor}, Cantidad: ${product.cantidad}, Precio: ${product.precio}`);
         }
     }
 

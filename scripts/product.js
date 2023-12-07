@@ -13,6 +13,11 @@ export class Product {
         this.#precio = precio;
     }
 
+    // Metodo estático que devuelve una cantidad aleatoria entre 1 y 20
+  static getRandomQuantity() {
+    return Math.floor(Math.random() * 20) + 1;
+  }
+
     get id() {
         return this.#id;
     }
