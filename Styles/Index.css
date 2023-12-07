@@ -5,8 +5,10 @@
 
 body{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    background-color: rgb(204, 53, 42);
-    background: radial-gradient(circle, rgb(204, 53, 42) 0%, rgb(214, 197, 197) 100%);
+    background-image: url(../assets/imgs/pinkjapan.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 h1{
