@@ -21,6 +21,16 @@ h2{
     color: black; 
 }
 
+h2::before {
+    content: "« ";
+    color: black;
+  }
+  
+  h2::after {
+    content: " »";
+    color: black;
+  }
+
 form{
     display: flex;
     justify-content: center;
@@ -77,6 +87,11 @@ input{
     background-color: rgb(81, 79, 79);
     outline: none;
 }
+
+input:focus {
+    border: red 2px groove;
+    padding: 2px;
+  }
 
 button{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
