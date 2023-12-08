@@ -2,7 +2,7 @@ import { Product } from './product.js';
 import { ProductManager } from './productManager.js';
 import { storeProducts } from './localStorage.js';
 
-// Instanciar el administrador de productos
+// Instanciamos el administrador de productos
 const productManager = new ProductManager();
 
 let productList = [
@@ -41,15 +41,17 @@ productList.forEach(product => productManager.addProduct(product));
 storeProducts(productList);
 
 // De esta forma podremos buscar productos en nuestro inventario
-const searchInput = document.getElementById('search-input');
-searchInput.addEventListener('input', function(e) {
-  const searchValue = e.target.value;
-  productManager.searchProduct(searchValue);
+const inventorySearch = document.getElementById('search-input');
+inventorySearch.addEventListener('input', function(e) {
+  const searchData = e.target.value;
+
+  productManager.searchProduct(searchData);
 });
 
 // De esta forma podremos añadir productos a nuestro inventario
-const addForm = document.getElementById('inventory-tab-form');
-addForm.addEventListener('submit', function(e) {
+const inventoryAdd = document.getElementById('inventory-tab-form');
+
+inventoryAdd.addEventListener('submit', function(e) {
   e.preventDefault();
   const nombre = document.getElementById('product-name').value;
   const autor = document.getElementById('product-author').value;
@@ -57,19 +59,23 @@ addForm.addEventListener('submit', function(e) {
   const precio = document.getElementById('product-price').value;
   const id = Date.now();
   const product = new Product(id, nombre, autor, cantidad, precio);
+
   productManager.addProduct(product);
+
   this.reset();
 });
 
 // De esta forma podremos editar productos de nuestro inventario
-const editForm = document.getElementById('inventory-edit');
-editForm.addEventListener('submit', function(e) {
+const inventoryEdit = document.getElementById('inventory-edit');
+inventoryEdit.addEventListener('submit', function(e) {
   e.preventDefault(); 
   const nombre = document.getElementById('product-name').value;
   const autor = document.getElementById('product-author').value;
   const cantidad = document.getElementById('product-qty').value;
   const precio = document.getElementById('product-price').value;
   const id = document.getElementById('edit-id').value;
+
   productManager.updateProduct(id, nombre, autor, cantidad, precio);
+  
   this.reset(); 
 });
