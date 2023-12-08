@@ -71,5 +71,5 @@ editForm.addEventListener('submit', function(e) {
 const searchInput = document.getElementById('search-input');
 searchInput.addEventListener('input', function(e) {
   const searchValue = e.target.value;
-  inventory.searchProduct(searchValue);
+  productManager.searchProduct(searchValue);
 });

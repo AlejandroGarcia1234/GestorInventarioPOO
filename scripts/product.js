@@ -58,7 +58,4 @@ export class Product {
         this.#precio = value
     }
 
-    showProduct(){
-        console.log(`ID: ${this.#id}, Nombre: ${this.#nombre}, Autor: ${this.#autor}, Cantidad: ${this.#cantidad}, Precio: ${this.#precio}`);
-    }
 }
