@@ -34,13 +34,20 @@ let productList = [
 
 ];
 
-// Agrega cada producto predeterminado al inventario
+// Vamos agregando cada producto a nuestro gestor de inventario
 productList.forEach(product => productManager.addProduct(product));
 
-// Almacena los productos predeterminados en el almacenamiento local
+// Almacenamos los productos en el almacenamiento local
 storeProducts(productList);
 
-// Obtiene el formulario de añadir producto por su ID y agrega un evento de escucha al envío
+// De esta forma podremos buscar productos en nuestro inventario
+const searchInput = document.getElementById('search-input');
+searchInput.addEventListener('input', function(e) {
+  const searchValue = e.target.value;
+  productManager.searchProduct(searchValue);
+});
+
+// De esta forma podremos añadir productos a nuestro inventario
 const addForm = document.getElementById('inventory-tab-form');
 addForm.addEventListener('submit', function(e) {
   e.preventDefault();
@@ -54,7 +61,7 @@ addForm.addEventListener('submit', function(e) {
   this.reset();
 });
 
-// Obtiene el formulario de editar producto por su ID y agrega un evento de escucha al envío
+// De esta forma podremos editar productos de nuestro inventario
 const editForm = document.getElementById('inventory-edit');
 editForm.addEventListener('submit', function(e) {
   e.preventDefault(); 
@@ -65,11 +72,4 @@ editForm.addEventListener('submit', function(e) {
   const id = document.getElementById('edit-id').value;
   productManager.updateProduct(id, nombre, autor, cantidad, precio);
   this.reset(); 
-});
-
-// Obtiene el campo de búsqueda de productos por su ID y agrega un evento de entrada de texto
-const searchInput = document.getElementById('search-input');
-searchInput.addEventListener('input', function(e) {
-  const searchValue = e.target.value;
-  productManager.searchProduct(searchValue);
 });

@@ -5,25 +5,44 @@ export class ProductManager {
         this.#products = [];
     }
 
-    // Agrega un producto al inventario
+// Función para buscar productos de nuestro inventario
+  searchProduct(searchTerm) {
+    let filteredProducts = this.products.filter((product) => {
+      const searchValue = searchTerm.toLowerCase();
+      return (
+        product.nombre.toLowerCase().includes(searchValue) ||
+        product.autor.toLowerCase().includes(searchValue)
+      );
+    });
+    this.displayInventory(filteredProducts);
+  }
+
+// Función para agregar un producto a nuestro inventario
   addProduct(product) {
     this.products.push(product);
     if (product.nombre && product.autor && product.cantidad && product.precio) {
-      const plainProduct = {
+      const localProduct = {
         id: product.id,
         nombre: product.name,
         autor: product.autor,
         cantidad: product.quantity,
         precio: product.price,
       };
-      const productJson = JSON.stringify(plainProduct);
+      const productJson = JSON.stringify(localProduct);
       localStorage.setItem(`Producto: ${product.id}`, productJson);
     }
 
     this.displayInventory();
   }
 
-// Edita un producto en el inventario
+// Función para eliminar un producto de nuestro inventario
+  deleteProduct(id) {
+    this.products = this.products.filter((product) => product.id !== id);
+    localStorage.removeItem(`Producto: ${id}`);
+    this.displayInventory();
+  }
+
+// Función para editar un producto de nuestro inventario
   editProduct(id) {
     let product = this.products.find((product) => product.id === id);
     if (product) {
@@ -38,13 +57,8 @@ export class ProductManager {
       }
     }
   }
-// Elimina un producto del inventario
-  deleteProduct(id) {
-    this.products = this.products.filter((product) => product.id !== id);
-    localStorage.removeItem(`Producto: ${id}`);
-    this.displayInventory();
-  }
-// Actualiza la información de un producto en el inventario
+
+// Función para actualizar un producto de nuestro inventario
   updateProduct(id, nombre, autor, cantidad, precio) {
     let product = this.products.find((product) => product.id == id);
     localStorage.removeItem(`Producto: ${id}`);
@@ -58,25 +72,19 @@ export class ProductManager {
     }
 
     if (product.nombre && product.autor && product.cantidad && product.precio) {
-      const plainProduct = {
+      const localProduct = {
         id: product.id,
         nombre: product.nombre,
         autor: product.autor,
         cantidad: product.cantidad,
         precio: product.precio,
       };
-      const productJson = JSON.stringify(plainProduct);
+      const productJson = JSON.stringify(localProduct);
       localStorage.setItem(`Producto: ${product.id}`, productJson);
     }
   }
-// Busca productos en el inventario por nombre
-  searchProduct(nombre) {
-    let filteredProducts = this.products.filter((product) =>
-      product.nombre.toLowerCase().includes(nombre.toLowerCase())
-    );
-    this.displayInventory(filteredProducts);
-  }
-// Muestra los productos del inventario en la interfaz
+
+// Función para mostrar productos de nuestro inventario
   displayInventory(products = this.products) {
     const tableBody = document.getElementById("more-rows");
     tableBody.innerHTML = "";
@@ -87,7 +95,7 @@ export class ProductManager {
     });
   }
 
-// Crea una fila para un producto en la interfaz
+// Función para la creación de una fila
   createRow(product) {
     const row = document.createElement("tr");
     const cellName = this.createCell(product.nombre);
@@ -104,13 +112,13 @@ export class ProductManager {
 
     return row;
   }
-// Crea una celda con un valor para la interfaz
+// Función para la creación de una celda
   createCell(value) {
     const cell = document.createElement("td");
     cell.textContent = value;
     return cell;
   }
-// Crea la celda de acciones (botones) para la interfaz
+// Función para la creación de la botones de borrar y editar en la misma celda
   createActionsCell(productId) {
     const cell = document.createElement("td");
     const deleteButton = this.createButton("delete-btn", "Borrar", () => this.deleteProduct(productId));
@@ -121,7 +129,7 @@ export class ProductManager {
 
     return cell;
   }
-// Crea un botón con un manejador de eventos para la interfaz
+// Función que nos permite la creación y manejo de botones en nuestro gestor de inventario
   createButton(className, text, clickHandler) {
     const button = document.createElement("button");
     button.className = className;
@@ -129,11 +137,11 @@ export class ProductManager {
     button.addEventListener("click", clickHandler);
     return button;
   }
-// Obtiene la lista de productos
+
   get products() {
     return this.#products;
   }
-// Establece la lista de productos
+
   set products(products) {
     this.#products = products;
   }
