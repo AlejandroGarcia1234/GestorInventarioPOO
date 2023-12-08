@@ -90,19 +90,19 @@ export class ProductManager {
     tableBody.innerHTML = "";
 
     products.forEach((product) => {
-      const row = this.createRow(product);
+      const row = this.newRow(product);
       tableBody.appendChild(row);
     });
   }
 
 // Función para la creación de una fila
-  createRow(product) {
+  newRow(product) {
     const row = document.createElement("tr");
-    const cellName = this.createCell(product.nombre);
-    const cellAuthor = this.createCell(product.autor);
-    const cellQuantity = this.createCell(product.cantidad);
-    const cellPrice = this.createCell(product.precio);
-    const cellActions = this.createActionsCell(product.id);
+    const cellName = this.newCell(product.nombre);
+    const cellAuthor = this.newCell(product.autor);
+    const cellQuantity = this.newCell(product.cantidad);
+    const cellPrice = this.newCell(product.precio);
+    const cellActions = this.newActionsCell(product.id);
 
     row.appendChild(cellName);
     row.appendChild(cellAuthor);
@@ -113,16 +113,16 @@ export class ProductManager {
     return row;
   }
 // Función para la creación de una celda
-  createCell(value) {
+  newCell(value) {
     const cell = document.createElement("td");
     cell.textContent = value;
     return cell;
   }
 // Función para la creación de la botones de borrar y editar en la misma celda
-  createActionsCell(productId) {
+  newActionsCell(productId) {
     const cell = document.createElement("td");
-    const deleteButton = this.createButton("delete-btn", "Borrar", () => this.deleteProduct(productId));
-    const editButton = this.createButton("edit-btn", "Editar", () => this.editProduct(productId));
+    const deleteButton = this.newButton("delete-btn", "Borrar", () => this.deleteProduct(productId));
+    const editButton = this.newButton("edit-btn", "Editar", () => this.editProduct(productId));
 
     cell.appendChild(deleteButton);
     cell.appendChild(editButton);
@@ -130,7 +130,7 @@ export class ProductManager {
     return cell;
   }
 // Función que nos permite la creación y manejo de botones en nuestro gestor de inventario
-  createButton(className, text, clickHandler) {
+  newButton(className, text, clickHandler) {
     const button = document.createElement("button");
     button.className = className;
     button.textContent = text;
