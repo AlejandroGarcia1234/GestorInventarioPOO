@@ -1,4 +1,4 @@
-# Gestión de Inventario basado en nuestro antiguo proyecto, pero esta vez realizado usando POO
+# Gestión de Inventario basado en nuestro antiguo proyecto, pero esta vez realizado mediante la Programación Orientada a Objetos (POO)
 
 * scripts:
     1. localStorage.js
