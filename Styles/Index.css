@@ -139,7 +139,7 @@ input{
 }
 
 input:focus {
-    border: red 2px groove;
+    border: pink 2px groove;
     padding: 2px;
   }
 
@@ -152,10 +152,6 @@ button{
     border: none;
     border-radius: 5px;
     cursor: pointer;
-}
-
-button:hover{
-    background-color: rgb(24, 141, 57);
 }
 
 .delete-btn{
