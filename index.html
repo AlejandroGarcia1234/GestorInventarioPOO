@@ -23,9 +23,12 @@
         <input type="number" id="product-qty" required>
         <label for="product-price">Precio: </label>
         <input type="number" step="0.01" id="product-price" required>
-        <button type="submit">Agregar Producto</button>
+        <button type="submit" id="add-product">Agregar Producto</button>
         
-        
+    </form>
+
+    <form id="inventory-edit" class="inventory-edit-form">
+
     </form>
 
     <div class="browser">
@@ -39,11 +42,13 @@
             <th>Autor</th>
             <th>Cantidad</th>
             <th>Precio</th>
-            <th>Acciones</th>
+            <th class="actions">Acciones</th>
         </tr>
-        <tbody id="clean-table"></tbody>
+        <tbody id="more-rows"></tbody>
 
     </table>
+
+    <div class="no-match" id="no-match"></div>
 
 
     <script type="module" src="Scripts/main.js"></script>

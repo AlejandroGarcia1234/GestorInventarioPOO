@@ -5,86 +5,71 @@ import { storeProducts } from './localStorage.js';
 // Instanciar el administrador de productos
 const productManager = new ProductManager();
 
-let inventory = [
-    { id: 1, nombre: "One Piece", autor: "Eiichiro Oda", cantidad: getRandomQuantity(), precio: 7.95 },
-    { id: 2, nombre: "Berserk", autor: "Kentaro Miura", cantidad: getRandomQuantity(), precio: 9.95 },
-    { id: 3, nombre: "20th Century Boys", autor: "Naoki Urasawa", cantidad: getRandomQuantity(), precio: 20.75 },
-    { id: 4, nombre: "Monster", autor: "Naoki Urasawa", cantidad: getRandomQuantity(), precio: 21.95 },
-    { id: 5, nombre: "Naruto", autor: "Masashi Kishimoto", cantidad: getRandomQuantity(), precio: 7.95 },
-    { id: 6, nombre: "Bleach", autor: "Tite Kubo", cantidad: getRandomQuantity(), precio: 6.95 },
-    { id: 7, nombre: "Bobobo", autor: "Yoshio Sawai", cantidad: getRandomQuantity(), precio: 12.95 },
-    { id: 8, nombre: "Uzumaki", autor: "Junji Ito", cantidad: getRandomQuantity(), precio: 30.95 },
-    { id: 9, nombre: "Mushishi", autor: "Yuki Urushibara", cantidad: getRandomQuantity(), precio: 25.95 },
-    { id: 10, nombre: "Evangelion", autor: "Yoshiyuki Sadamoto", cantidad: getRandomQuantity(), precio: 25.99 },
-    { id: 11, nombre: "Jujutsu Kaisen", autor: "Gege Akutami", cantidad: getRandomQuantity(), precio: 8.95 },
-    { id: 12, nombre: "JoJo's Bizarre Adventure", autor: "Hirohiko Araki", cantidad: getRandomQuantity(), precio: 19.95 },
-    { id: 13, nombre: "Nausicaa", autor: "Hayao Miyazaki", cantidad: getRandomQuantity(), precio: 50.95 },
-    { id: 14, nombre: "Hellsing", autor: "Kota Hirano", cantidad: getRandomQuantity(), precio: 29.95 },
-    { id: 15, nombre: "Afro Samurai", autor: "Takashi Okazaki", cantidad: getRandomQuantity(), precio: 14.95 },
-    { id: 16, nombre: "Akira", autor: "Katsuhiro Otomo", cantidad: getRandomQuantity(), precio: 32.95 },
-    { id: 17, nombre: "Battle Royale", autor: "Koushun Takami", cantidad: getRandomQuantity(), precio: 18.95 },
-    { id: 18, nombre: "Blame!", autor: "Tsutomu Nihei", cantidad: getRandomQuantity(), precio: 12.75 },
-    { id: 19, nombre: "Death Note", autor: "Tsugumi Oba", cantidad: getRandomQuantity(), precio: 29.99 },
-    { id: 20, nombre: "Ghost in the Shell", autor: "Masamune Shirow", cantidad: getRandomQuantity(), precio: 14.95 },
-    { id: 21, nombre: "Pluto", autor: "Naoki Urasawa", cantidad: getRandomQuantity(), precio: 24.95 },
-    { id: 22, nombre: "Shaman King", autor: "Hiroyuki Takei", cantidad: getRandomQuantity(), precio: 20.75 },
-    { id: 23, nombre: "Trigun", autor: "Yasuhiro Nightow", cantidad: getRandomQuantity(), precio: 10.95 },
-    { id: 24, nombre: "Wanted!", autor: "Eiichiro Oda", cantidad: getRandomQuantity(), precio: 7.95 },
-    { id: 25, nombre: "Dragon Ball", autor: "Akira Toriyama", cantidad: getRandomQuantity(), precio: 16.85 },
+let productList = [
+    new Product(1, "One Piece", "Eiichiro Oda", Product.getRandomQuantity(), 7.95 ),
+    new Product(2, "Berserk", "Kentaro Miura", Product.getRandomQuantity(), 9.95 ),
+    new Product(3, "20th Century Boys", "Naoki Urasawa", Product.getRandomQuantity(), 20.75 ),
+    new Product(4, "Monster", "Naoki Urasawa", Product.getRandomQuantity(), 21.95 ),
+    new Product(5, "Naruto", "Masashi Kishimoto", Product.getRandomQuantity(), 7.95 ),
+    new Product(6, "Bleach", "Tite Kubo", Product.getRandomQuantity(), 6.95 ),
+    new Product(7, "Bobobo", "Yoshio Sawai", Product.getRandomQuantity(), 12.95 ),
+    new Product(8, "Uzumaki", "Junji Ito", Product.getRandomQuantity(), 30.95 ),
+    new Product(9, "Mushishi", "Yuki Urushibara", Product.getRandomQuantity(), 25.95 ),
+    new Product(10, "Evangelion", "Yoshiyuki Sadamoto", Product.getRandomQuantity(), 25.99 ),
+    new Product(11, "Jujutsu Kaisen", "Gege Akutami", Product.getRandomQuantity(), 8.95 ),
+    new Product(12, "JoJo's Bizarre Adventure", "Hirohiko Araki", Product.getRandomQuantity(), 19.95 ),
+    new Product(13, "Nausicaa", "Hayao Miyazaki", Product.getRandomQuantity(), 50.95 ),
+    new Product(14, "Hellsing", "Kota Hirano", Product.getRandomQuantity(), 29.95 ),
+    new Product(15, "Afro Samurai", "Takashi Okazaki", Product.getRandomQuantity(), 14.95 ),
+    new Product(16, "Akira", "Katsuhiro Otomo", Product.getRandomQuantity(), 32.95 ),
+    new Product(17, "Battle Royale", "Koushun Takami", Product.getRandomQuantity(), 18.95 ),
+    new Product(18, "Blame!", "Tsutomu Nihei", Product.getRandomQuantity(), 12.75 ),
+    new Product(19, "Death Note", "Tsugumi Oba", Product.getRandomQuantity(), 29.99 ),
+    new Product(20, "Ghost in the Shell", "Masamune Shirow", Product.getRandomQuantity(), 14.95 ),
+    new Product(21, "Pluto", "Naoki Urasawa", Product.getRandomQuantity(), 24.95 ),
+    new Product(22, "Shaman King", "Hiroyuki Takei", Product.getRandomQuantity(), 20.75 ),
+    new Product(23, "Trigun", "Yasuhiro Nightow", Product.getRandomQuantity(), 10.95 ),
+    new Product(24, "Wanted!", "Eiichiro Oda", Product.getRandomQuantity(), 7.95 ),
+    new Product(25, "Dragon Ball", "Akira Toriyama", Product.getRandomQuantity(), 16.85 ),
+
 ];
 
-loadProducts(productManager);
+// Agrega cada producto predeterminado al inventario
+productList.forEach(product => productManager.addProduct(product));
 
-// Evento del formularuo para agregar un nuevo producto
+// Almacena los productos predeterminados en el almacenamiento local
+storeProducts(productList);
 
-document.getElementById('inventory-tab-form').addEventListener('submit', function (event) {
-    event.preventDefault();
-
-    const productName = document.getElementById('product-name').value;
-    const productAuthor = document.getElementById('product-author').value;
-    const productQuantity = parseInt(document.getElementById('product-qty').value);
-    const productPrice = parseFloat(document.getElementById('product-price').value);
-
-    const newProduct = new Product(Date.now(), productName, productAuthor, productQuantity, productPrice);
-
-    // Agregar el nuevo producto al administrador de productos
-    productManager.addProduct(newProduct);
-
-    // Limpiar el formulario
-    this.reset();
-
-    // Actualizamos la tabla de inventario
-
-    updateInventoryTable();
-
+// Obtiene el formulario de añadir producto por su ID y agrega un evento de escucha al envío
+const addForm = document.getElementById('inventory-tab-form');
+addForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const nombre = document.getElementById('product-name').value;
+  const autor = document.getElementById('product-author').value;
+  const cantidad = document.getElementById('product-qty').value;
+  const precio = document.getElementById('product-price').value;
+  const id = Date.now();
+  const product = new Product(id, nombre, autor, cantidad, precio);
+  productManager.addProduct(product);
+  this.reset();
 });
 
-// Función para actualizar la tabla de inventario
-function updateInventoryTable() {
-    const tableBody = document.getElementById('body-table');
-    tableBody.innerHTML = '';
+// Obtiene el formulario de editar producto por su ID y agrega un evento de escucha al envío
+const editForm = document.getElementById('inventory-edit');
+editForm.addEventListener('submit', function(e) {
+  e.preventDefault(); 
+  const nombre = document.getElementById('product-name').value;
+  const autor = document.getElementById('product-author').value;
+  const cantidad = document.getElementById('product-qty').value;
+  const precio = document.getElementById('product-price').value;
+  const id = document.getElementById('edit-id').value;
+  productManager.updateProduct(id, nombre, autor, cantidad, precio);
+  this.reset(); 
+});
 
-    // Obtener la lista de productos del administrador
-    const products = productManager.listProducts();
-
-    // Iterar sobre la lista de productos y agregar filas a la tabla
-    products.forEach(product => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td>${product.nombre}</td>
-            <td>${product.autor}</td>
-            <td>${product.cantidad}</td>
-            <td>${product.precio}</td>
-            <td>
-                <button id="edit-button">Editar</button>
-                <button id="delete-button">Eliminar</button>
-            </td>
-        `;
-        tableBody.appendChild(row);
-    });
-
-}
-
-// Llamar a la función inicial para mostrar la tabla del inventario
-updateInventoryTable();
-
+// Obtiene el campo de búsqueda de productos por su ID y agrega un evento de entrada de texto
+const searchInput = document.getElementById('search-input');
+searchInput.addEventListener('input', function(e) {
+  const searchValue = e.target.value;
+  inventory.searchProduct(searchValue);
+});
