@@ -1,3 +1,5 @@
+// GitHub: https://github.com/AlejandroGarcia1234/GestorInventarioPOO
+
 import { Product } from './product.js';
 import { ProductManager } from './productManager.js';
 import { storeProducts } from './localStorage.js';
@@ -42,6 +44,7 @@ storeProducts(productList);
 
 // De esta forma podremos buscar productos en nuestro inventario
 const inventorySearch = document.getElementById('search-input');
+
 inventorySearch.addEventListener('input', function(e) {
   const searchData = e.target.value;
 
@@ -67,6 +70,7 @@ inventoryAdd.addEventListener('submit', function(e) {
 
 // De esta forma podremos editar productos de nuestro inventario
 const inventoryEdit = document.getElementById('inventory-edit');
+
 inventoryEdit.addEventListener('submit', function(e) {
   e.preventDefault(); 
   const nombre = document.getElementById('product-name').value;
@@ -76,6 +80,6 @@ inventoryEdit.addEventListener('submit', function(e) {
   const id = document.getElementById('edit-id').value;
 
   productManager.updateProduct(id, nombre, autor, cantidad, precio);
-  
+
   this.reset(); 
 });
