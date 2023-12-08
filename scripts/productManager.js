@@ -70,15 +70,15 @@ export class ProductManager {
     }
   }
 // Busca productos en el inventario por nombre
-  searchProduct(name) {
+  searchProduct(nombre) {
     let filteredProducts = this.products.filter((product) =>
-      product.name.toLowerCase().includes(name.toLowerCase())
+      product.nombre.toLowerCase().includes(nombre.toLowerCase())
     );
     this.displayInventory(filteredProducts);
   }
 // Muestra los productos del inventario en la interfaz
   displayInventory(products = this.products) {
-    const tableBody = document.getElementById("add-rows");
+    const tableBody = document.getElementById("more-rows");
     tableBody.innerHTML = "";
 
     products.forEach((product) => {
@@ -90,12 +90,14 @@ export class ProductManager {
 // Crea una fila para un producto en la interfaz
   createRow(product) {
     const row = document.createElement("tr");
-    const cellNames = this.createCell(product.name);
-    const cellQuantity = this.createCell(product.quantity);
-    const cellPrice = this.createCell(product.price);
+    const cellName = this.createCell(product.nombre);
+    const cellAuthor = this.createCell(product.autor);
+    const cellQuantity = this.createCell(product.cantidad);
+    const cellPrice = this.createCell(product.precio);
     const cellActions = this.createActionsCell(product.id);
 
-    row.appendChild(cellNames);
+    row.appendChild(cellName);
+    row.appendChild(cellAuthor);
     row.appendChild(cellQuantity);
     row.appendChild(cellPrice);
     row.appendChild(cellActions);
@@ -111,8 +113,8 @@ export class ProductManager {
 // Crea la celda de acciones (botones) para la interfaz
   createActionsCell(productId) {
     const cell = document.createElement("td");
-    const deleteButton = this.createButton("delete-button", "Borrar", () => this.deleteProduct(productId));
-    const editButton = this.createButton("edit-button", "Editar", () => this.editProduct(productId));
+    const deleteButton = this.createButton("delete-btn", "Borrar", () => this.deleteProduct(productId));
+    const editButton = this.createButton("edit-btn", "Editar", () => this.editProduct(productId));
 
     cell.appendChild(deleteButton);
     cell.appendChild(editButton);
