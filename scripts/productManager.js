@@ -23,10 +23,10 @@ export class ProductManager {
     if (product.nombre && product.autor && product.cantidad && product.precio) {
       const localProduct = {
         id: product.id,
-        nombre: product.name,
+        nombre: product.nombre,
         autor: product.autor,
-        cantidad: product.quantity,
-        precio: product.price,
+        cantidad: product.cantidad,
+        precio: product.precio,
       };
       const productJson = JSON.stringify(localProduct);
       localStorage.setItem(`Producto: ${product.id}`, productJson);

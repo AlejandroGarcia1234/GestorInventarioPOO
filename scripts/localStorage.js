@@ -1,5 +1,7 @@
 export function storeProducts(productList) {
 
+  localStorage.clear();
+  
   productList.forEach(product => {
 
       if (product.nombre && product.autor && product.cantidad && product.precio) {
